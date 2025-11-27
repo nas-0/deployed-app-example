@@ -14,6 +14,6 @@ async def get_client():
     return client
 
 @app.get("/dog")
-async def root(client: httpx.AsyncClient = Depends(get_client)):
+async def get_dog(client: httpx.AsyncClient = Depends(get_client)):
     response = await client.get("https://dog.ceo/api/breeds/image/random")
     return response.json()
