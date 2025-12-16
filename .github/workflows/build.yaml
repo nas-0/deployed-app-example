@@ -5,3 +5,30 @@ on:
     branches:
       - feature/*
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install app dependencies
+        run: |
+          echo "Installing application dependencies..."
+          pip install -r requirements.txt
+
+      - name: install test dependencies
+        run: |
+          echo "Installing test dependencies..."
+          pip install -requirements-test.txt
+
+      - name: Run tests
+        run: |
+          # Add your test commands here
+          echo "Running tests..."
+          pytest tests.py
