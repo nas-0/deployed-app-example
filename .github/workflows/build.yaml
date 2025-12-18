@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - feature/*
+  merge:
+    branches:
+      - main
 
 jobs:
   build:
@@ -32,3 +35,9 @@ jobs:
           # Add your test commands here
           echo "Running tests..."
           pytest tests.py
+
+      - name: Build Docker image
+        run: |
+          echo "Building Docker image..."
+          docker build -t soalerflare/deployed-app-example .
+          docker push soalerflare/deployed-app-example
