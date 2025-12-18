@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - feature/*
-  merge:
-    branches:
-      - main
 
 jobs:
   build:
