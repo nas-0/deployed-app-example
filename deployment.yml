@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployed-app-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployed-app-example
+  template:
+    metadata:
+      labels:
+        app: deployed-app-example
+    spec:
+      containers:
+        - name: api
+          image: deployed-app-example:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
